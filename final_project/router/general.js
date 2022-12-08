@@ -62,7 +62,7 @@ public_users.get('/isbn/:isbn',function (req, res) {
     );
  });
  
- 
+ //Using Promise Get  books based on author
  function getByAuthor(author) {
   return new Promise((resolve, reject) => {
       let authorName = parseInt(author);
@@ -73,6 +73,7 @@ public_users.get('/isbn/:isbn',function (req, res) {
       }
   })
 } 
+
 // Get book details based on author
 public_users.get('/author/:author',function (req, res) {
   //Write your code here
@@ -85,6 +86,7 @@ public_users.get('/author/:author',function (req, res) {
 });
 
 
+//Using Promise Get  books based on title
 function getByTitle(title) {
   return new Promise((resolve, reject) => {
       let titleName = parseInt(title);
