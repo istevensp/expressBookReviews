@@ -31,6 +31,7 @@ function getBooks() {
   });
 }
 
+
 // Get the book list available in the shop
 public_users.get('/',function (req, res) {
   //Write your code here
