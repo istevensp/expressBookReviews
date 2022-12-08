@@ -61,7 +61,18 @@ public_users.get('/isbn/:isbn',function (req, res) {
         error => res.status(error.status).json({message: error.message})
     );
  });
-  
+ 
+ 
+ function getByAuthor(author) {
+  return new Promise((resolve, reject) => {
+      let authorName = parseInt(author);
+      if (books[authorName]) {
+          resolve(books[authorName]);
+      } else {
+          reject({status:404, message:`Author Name ${author} not found`});
+      }
+  })
+} 
 // Get book details based on author
 public_users.get('/author/:author',function (req, res) {
   //Write your code here
@@ -72,6 +83,18 @@ public_users.get('/author/:author',function (req, res) {
     .then((books) => books.filter((book) => book.author === author))
     .then((filteredBooks) => res.send(filteredBooks));
 });
+
+
+function getByTitle(title) {
+  return new Promise((resolve, reject) => {
+      let titleName = parseInt(title);
+      if (books[titleName]) {
+          resolve(books[titleName]);
+      } else {
+          reject({status:404, message:`title ${title} not found`});
+      }
+  })
+}
 
 // Get all books based on title
 public_users.get('/title/:title',function (req, res) {
